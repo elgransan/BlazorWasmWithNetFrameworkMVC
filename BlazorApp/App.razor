@@ -1,12 +1,12 @@
 @inject IJSRuntime JS
 
-<DynamicComponent Type="@Type.GetType(text)" />
+<DynamicComponent Type="@Type.GetType(component)" />
 
 @code {
-    private string text = "";
+    private string component = "";
 
     protected override async Task OnInitializedAsync()
     {
-        text = await JS.InvokeAsync<string>("getProperty", "app", "test");
+        component = await JS.InvokeAsync<string>("getProperty", "app", "component");
     }
 }
