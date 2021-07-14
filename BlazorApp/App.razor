@@ -5,8 +5,9 @@
 @code {
     private string component = "";
 
-    protected override async Task OnInitializedAsync()
+    public override async Task SetParametersAsync(ParameterView parameters)
     {
         component = await JS.InvokeAsync<string>("getProperty", "app", "component");
+        await base.SetParametersAsync(parameters);
     }
 }
