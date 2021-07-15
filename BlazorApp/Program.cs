@@ -1,5 +1,3 @@
-//#define testApp
-
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,7 +15,7 @@ namespace BlazorApp
         public static async Task Main(string[] args)
         {
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
-#if testApp
+#if STANDALONE
             builder.RootComponents.Add<AppDebug>("#app");
 #else
             builder.RootComponents.Add<App>("#app");
