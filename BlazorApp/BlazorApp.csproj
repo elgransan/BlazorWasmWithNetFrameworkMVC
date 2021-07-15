@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
+    <Configurations>Debug;Release;STANDALONE</Configurations>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
   </PropertyGroup>
 
   <ItemGroup>
@@ -14,7 +16,7 @@
   </ItemGroup>
   
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="xcopy $(TargetDir)wwwroot\_framework $(SolutionDir)WebApplication5\_framework\ /Y /S" />
+    <Exec Command="if $(ConfigurationName) NEQ STANDALONE  xcopy $(TargetDir)wwwroot\_framework $(SolutionDir)WebApplication5\_framework\ /Y /S" />
   </Target>
 
 </Project>

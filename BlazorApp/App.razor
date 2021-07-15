@@ -1,12 +1,18 @@
 @inject IJSRuntime JS
 
-<DynamicComponent Type="@Type.GetType(component)" />
+@if (showComponent) {
+    <DynamicComponent Type="@Type.GetType(component)" />
+}
 
 @code {
     private string component = "";
+    private bool showComponent = false;
 
-    protected override async Task OnInitializedAsync()
+    public override async Task SetParametersAsync(ParameterView parameters)
     {
         component = await JS.InvokeAsync<string>("getProperty", "app", "component");
+        Console.WriteLine("component: " + component);
+        showComponent = true;
+        await base.SetParametersAsync(parameters);
     }
 }
