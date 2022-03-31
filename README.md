@@ -4,6 +4,6 @@ With some tweaks and limitations you can run Blazor Wasm on Net Framework 4.x or
 
 ## How to use
 1. git clone repo
-2. Compile Blazor project first
+2. Compile BlazorApp project first
 3. Run ASP.NET MVC Project
 4. Enjoy
